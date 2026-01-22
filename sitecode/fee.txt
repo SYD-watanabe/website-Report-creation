@@ -1,0 +1,509 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>エクセル守るくん - サービス紹介</title>
+    <!-- フォント: 丸ゴシック（M PLUS Rounded 1c）と Zen丸ゴシック を読み込み -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=M+PLUS+Rounded+1c:wght@400;500;700;800&family=Zen+Maru+Gothic:wght@400;500;700&family=Roboto:wght@400;700;900&display=swap" rel="stylesheet">
+    <!-- アイコン: FontAwesome (補足用) -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+    <style>
+        /* --- Squarespace用 共通リセット＆設定 --- */
+        :root {
+            --navy: #001f3f;       /* 信頼のネイビー */
+            --green: #2ecc71;      /* 安全のグリーン */
+            --orange: #e67e22;     /* 注意喚起のオレンジ */
+            --text-main: #333333;  /* メインテキスト色（濃いグレー） */
+            --text-white: #ffffff;
+            --bg-light: #f4f7f6;   /* 薄いグレーの背景色 */
+        }
+
+        body {
+            margin: 0;
+            padding: 0;
+            background-color: transparent;
+        }
+
+        /* 全体のフォント設定（基本は丸ゴシック） */
+        .lp-wrapper {
+            font-family: 'M PLUS Rounded 1c', sans-serif;
+            color: var(--text-main);
+            width: 100%;
+            overflow-x: hidden;
+        }
+        
+        .lp-wrapper * {
+            box-sizing: border-box;
+        }
+
+        /* --- 共通コンポーネント --- */
+        .container {
+            max-width: 1000px;
+            margin: 0 auto;
+            padding: 0 20px;
+        }
+
+        .section-title {
+            font-size: 36px;
+            color: var(--navy);
+            text-align: center;
+            margin-bottom: 60px;
+            font-weight: 800;
+            position: relative;
+        }
+
+        /* --- 追加セクション：料金プラン --- */
+        .pricing-section {
+            background-color: var(--bg-light); /* 背景を薄いグレーに変更 */
+            padding: 100px 0;
+            width: 100%;
+        }
+
+        .pricing-grid {
+            display: flex;
+            justify-content: center;
+            gap: 40px;
+            align-items: stretch; /* 高さを揃える */
+        }
+
+        .pricing-card {
+            flex: 1;
+            background-color: #fff;
+            border-radius: 20px;
+            padding: 40px 30px;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            position: relative;
+            border: 2px solid #eee;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.05); /* 背景ありにあわせて影を少し調整 */
+        }
+
+        /* 無料プランのデザイン */
+        .pricing-card.free {
+            max-width: 400px;
+        }
+
+        /* プレミアムプランのデザイン（強調） */
+        .pricing-card.premium {
+            max-width: 400px;
+            border: 4px solid var(--orange); /* オレンジの枠で強調 */
+            box-shadow: 0 10px 30px rgba(230, 126, 34, 0.15);
+            transform: scale(1.05); /* 少し大きく見せる */
+            z-index: 2;
+        }
+
+        /* おすすめバッジ */
+        .pricing-badge {
+            position: absolute;
+            top: -15px;
+            background-color: var(--orange);
+            color: white;
+            padding: 5px 20px;
+            border-radius: 20px;
+            font-weight: 700;
+            font-size: 14px;
+            letter-spacing: 0.05em;
+        }
+
+        .plan-name {
+            font-size: 24px;
+            color: var(--navy);
+            margin-bottom: 20px;
+            font-weight: 800;
+        }
+
+        .plan-price {
+            margin-bottom: 30px;
+            color: var(--text-main);
+            font-family: 'Roboto', sans-serif;
+        }
+
+        .plan-price .yen {
+            font-size: 20px;
+            font-weight: 700;
+        }
+
+        .plan-price .amount {
+            font-size: 48px;
+            font-weight: 900;
+            color: var(--navy);
+        }
+
+        .plan-price .tax {
+            font-size: 14px;
+            color: #888;
+        }
+
+        /* 機能リスト */
+        .plan-features {
+            list-style: none;
+            padding: 0;
+            margin: 0 0 30px 0;
+            width: 100%;
+            text-align: left;
+        }
+
+        .plan-features li {
+            padding: 12px 0;
+            border-bottom: 1px solid #eee;
+            font-size: 16px;
+            font-family: 'Zen Maru Gothic', sans-serif;
+            font-weight: 500;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+
+        .plan-features li:last-child {
+            border-bottom: none;
+        }
+
+        .plan-features i {
+            color: var(--green);
+            font-size: 18px;
+        }
+
+        /* 注意書きエリア */
+        .plan-note {
+            background-color: #f8fafc;
+            padding: 15px;
+            border-radius: 10px;
+            font-size: 14px;
+            color: var(--text-main);
+            text-align: center;
+            line-height: 1.6;
+            margin-top: auto; /* 下に寄せる */
+            width: 100%;
+        }
+
+        .plan-limit {
+            font-size: 28px;
+            font-weight: 700;
+            font-family: 'Roboto', sans-serif;
+            color: var(--navy);
+        }
+
+        /* --- セクション4：Q&A --- */
+        .qa-section {
+            background-color: #fff; /* 背景を白に戻す（交互にするため） */
+            padding: 100px 0;
+            width: 100%;
+        }
+
+        .qa-list {
+            display: flex;
+            flex-direction: column;
+            gap: 30px;
+        }
+
+        .qa-item {
+            background-color: var(--bg-light); /* カード背景を薄グレーに変更 */
+            border-radius: 16px;
+            overflow: hidden;
+            /* box-shadow: 0 4px 10px rgba(0,0,0,0.05); */
+            border-left: 8px solid var(--navy); /* アクセントライン */
+        }
+
+        /* 質問部分 */
+        .qa-question {
+            padding: 25px 30px;
+            display: flex;
+            align-items: flex-start; /* 長文対応 */
+            gap: 20px;
+            font-size: 20px;
+            font-weight: 700;
+            color: var(--navy);
+            border-bottom: 1px solid #e0e0e0;
+        }
+
+        .qa-icon-q {
+            background-color: var(--navy);
+            color: #fff;
+            width: 40px;
+            height: 40px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-family: 'Roboto', sans-serif;
+            font-weight: 700;
+            flex-shrink: 0; /* 縮小防止 */
+        }
+
+        /* 回答部分 */
+        .qa-answer {
+            padding: 30px 30px 30px 90px; /* アイコンの分だけインデント */
+            font-family: 'Zen Maru Gothic', sans-serif;
+            font-weight: 500;
+            font-size: 16px;
+            line-height: 1.8;
+            color: var(--text-main);
+            position: relative;
+        }
+
+        /* Aアイコン（擬似要素で配置） */
+        .qa-answer::before {
+            content: 'A';
+            position: absolute;
+            left: 30px;
+            top: 30px;
+            width: 40px;
+            height: 40px;
+            background-color: #fff;
+            color: var(--green);
+            border: 2px solid var(--green);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-family: 'Roboto', sans-serif;
+            font-weight: 700;
+        }
+
+        /* --- セクション5：CTA (Closing) --- */
+        .cta-section {
+            background-color: #fff;
+            padding: 120px 0;
+            width: 100%;
+            text-align: center;
+        }
+
+        .cta-box {
+            max-width: 800px;
+            margin: 0 auto;
+        }
+
+        .cta-catch {
+            font-size: 40px;
+            color: var(--navy);
+            font-weight: 800;
+            margin-bottom: 20px;
+            line-height: 1.3;
+        }
+
+        .cta-sub {
+            font-family: 'Zen Maru Gothic', sans-serif;
+            font-weight: 500;
+            font-size: 18px;
+            color: var(--text-main);
+            margin-bottom: 50px;
+        }
+
+        /* ボタンデザイン */
+        .cta-btn {
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            background-color: var(--orange);
+            color: #fff;
+            text-decoration: none;
+            font-weight: 700;
+            font-size: 24px; /* 最後のボタンは大きく */
+            padding: 25px 60px;
+            border-radius: 100px;
+            box-shadow: 0 10px 25px rgba(230, 126, 34, 0.4);
+            transition: all 0.3s ease;
+            width: fit-content;
+            font-family: 'M PLUS Rounded 1c', sans-serif;
+        }
+
+        .cta-btn:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 15px 35px rgba(230, 126, 34, 0.5);
+            background-color: #d35400;
+        }
+        
+        .cta-btn i {
+            margin-left: 15px;
+        }
+
+        /* 安心要素（マイクロコピー） */
+        .cta-note {
+            margin-top: 25px;
+            font-size: 14px;
+            color: #888;
+            font-family: 'Zen Maru Gothic', sans-serif;
+        }
+
+        /* --- レスポンシブ対応 --- */
+        @media (max-width: 768px) {
+            .pricing-section, .qa-section, .cta-section {
+                padding: 60px 0;
+            }
+
+            /* 料金表のスマホ対応 */
+            .pricing-grid {
+                flex-direction: column;
+                align-items: center;
+                gap: 50px;
+            }
+            .pricing-card.premium {
+                transform: none; /* スマホでは拡大しない */
+                order: -1; /* スマホではプレミアムを先に表示 */
+                width: 100%;
+            }
+            .pricing-card.free {
+                width: 100%;
+            }
+            
+            /* Q&A */
+            .qa-question {
+                font-size: 18px;
+                padding: 20px;
+                gap: 15px;
+            }
+            .qa-answer {
+                padding: 20px;
+                display: flex;
+                flex-direction: column;
+                gap: 10px;
+            }
+            .qa-answer::before {
+                position: static;
+                margin-bottom: 10px;
+            }
+
+            /* CTA */
+            .cta-catch {
+                font-size: 28px;
+            }
+            .cta-btn {
+                width: 100%;
+                font-size: 20px;
+                padding: 20px;
+            }
+        }
+    </style>
+</head>
+<body>
+
+<div class="lp-wrapper">
+
+    <!-- ▼▼▼ 追加セクション：料金プラン ▼▼▼ -->
+    <section class="pricing-section">
+        <div class="container">
+            <h2 class="section-title">プラン内容</h2>
+            
+            <div class="pricing-grid">
+                
+                <!-- 無料プラン -->
+                <div class="pricing-card free">
+                    <h3 class="plan-name">無料プラン</h3>
+                    <div class="plan-price">
+                        <span class="yen">月額</span>
+                        <span class="amount">0</span>
+                        <span class="yen">円</span>
+                    </div>
+                    
+                    <ul class="plan-features">
+                        <li>
+                            作成済みテンプレート
+                            <span style="margin-left:auto; font-weight:700;">1つまで</span>
+                        </li>
+                    </ul>
+
+                    <div class="plan-note">
+                        2つ目以降のテンプレートを作成するには、<br>
+                        プレミアムプランへの<br>
+                        アップグレードが必要です。
+                    </div>
+                </div>
+
+                <!-- プレミアムプラン -->
+                <div class="pricing-card premium">
+                    <div class="pricing-badge">おすすめ</div>
+                    <h3 class="plan-name">プレミアムプラン</h3>
+                    <div class="plan-price">
+                        <span class="yen">月額</span>
+                        <span class="amount">5,500</span>
+                        <span class="yen">円</span>
+                        <span class="tax">（税込）</span>
+                    </div>
+                    
+                    <ul class="plan-features">
+                        <li><i class="fa-solid fa-check"></i> テンプレート作成：<strong style="color:var(--navy)">無制限</strong></li>
+                        <li><i class="fa-solid fa-check"></i> 見積書の作成数：<strong style="color:var(--navy)">無制限</strong></li>
+                        <li><i class="fa-solid fa-check"></i> フォームURL発行：<strong style="color:var(--navy)">無制限</strong></li>
+                        <li><i class="fa-solid fa-check"></i> ファイル保存期間：<strong style="color:var(--navy)">無期限</strong></li>
+                    </ul>
+                </div>
+
+            </div>
+        </div>
+    </section>
+
+    <!-- ▼▼▼ セクション4：よくあるご質問（Q&A） ▼▼▼ -->
+    <section class="qa-section">
+        <div class="container">
+            <h2 class="section-title">よくあるご質問</h2>
+            
+            <div class="qa-list">
+                
+                <!-- Q1 -->
+                <div class="qa-item">
+                    <div class="qa-question">
+                        <div class="qa-icon-q">Q</div>
+                        <div>複雑なマクロや関数が入っていても大丈夫？</div>
+                    </div>
+                    <div class="qa-answer">
+                        はい、大丈夫です！ファイルを直接編集するのではなく、データだけを流し込む仕組みなので、計算式やマクロを壊すことはありません。今まで通りのエクセルファイルをご利用いただけます。
+                    </div>
+                </div>
+
+                <!-- Q2 -->
+                <div class="qa-item">
+                    <div class="qa-question">
+                        <div class="qa-icon-q">Q</div>
+                        <div>現場の作業員は、新しいアプリの操作を覚える必要がありますか？</div>
+                    </div>
+                    <div class="qa-answer">
+                        いいえ、特別な研修は不要です。LINEやネット検索ができる方なら、誰でも直感的に使えるシンプルな画面デザインです。URLを開いて入力するだけなので、アプリのインストールも必要ありません。
+                    </div>
+                </div>
+
+                <!-- Q3 -->
+                <div class="qa-item">
+                    <div class="qa-question">
+                        <div class="qa-icon-q">Q</div>
+                        <div>操作感を試してみたい</div>
+                    </div>
+                    <div class="qa-answer">
+                        無料で1つのエクセルデータでお試しできるのでお気軽にどうぞ
+                    </div>
+                </div>
+
+            </div>
+        </div>
+    </section>
+
+    <!-- ▼▼▼ セクション5：お問い合わせ（CTA） ▼▼▼ -->
+    <section class="cta-section">
+        <div class="container cta-box">
+            <h2 class="cta-catch">
+                事務作業のストレスをゼロに。<br>
+                まずは無料でお試しください。
+            </h2>
+            <p class="cta-sub">
+                現在、無料トライアル実施中。<br class="mobile-show">
+                設定サポートも付いていますので、すぐにお使いいただけます。
+            </p>
+            
+            <a href="#contact" class="cta-btn">
+                無料で試してみる <i class="fa-solid fa-arrow-right"></i>
+            </a>
+            
+            <p class="cta-note">
+                <i class="fa-solid fa-check"></i> クレジットカード登録不要<br class="mobile-show">
+                <i class="fa-solid fa-check"></i> 1分でアカウント作成完了
+            </p>
+        </div>
+    </section>
+
+</div><!-- /lp-wrapper -->
+
+</body>
+</html>

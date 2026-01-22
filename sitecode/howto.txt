@@ -1,0 +1,399 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>エクセル守るくん - サービス紹介</title>
+    <!-- フォント: 丸ゴシック（M PLUS Rounded 1c）と Zen丸ゴシック を読み込み -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=M+PLUS+Rounded+1c:wght@400;500;700;800&family=Zen+Maru+Gothic:wght@400;500;700&family=Roboto:wght@400;700&display=swap" rel="stylesheet">
+    <!-- アイコン: FontAwesome (補足用) -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+    <style>
+        /* --- Squarespace用 共通リセット＆設定 --- */
+        :root {
+            --navy: #001f3f;       /* 信頼のネイビー */
+            --green: #2ecc71;      /* 安全のグリーン */
+            --orange: #e67e22;     /* 注意喚起のオレンジ */
+            --text-main: #333333;  /* メインテキスト色（濃いグレー） */
+            --text-white: #ffffff;
+            --bg-light: #f4f7f6;   /* 薄いグレーの背景色 */
+        }
+
+        body {
+            margin: 0;
+            padding: 0;
+            background-color: transparent;
+        }
+
+        /* 全体のフォント設定（基本は丸ゴシック） */
+        .lp-wrapper {
+            font-family: 'M PLUS Rounded 1c', sans-serif;
+            color: var(--text-main);
+            width: 100%;
+            overflow-x: hidden;
+        }
+        
+        .lp-wrapper * {
+            box-sizing: border-box;
+        }
+
+        /* --- 共通コンポーネント --- */
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 20px;
+        }
+
+        .section-title {
+            font-size: 36px;
+            color: var(--navy);
+            text-align: center;
+            margin-bottom: 60px;
+            font-weight: 800;
+            position: relative;
+        }
+
+        /* --- セクション3：手順（Steps） --- */
+        .steps-section {
+            background-color: #fff;
+            padding: 100px 0;
+            width: 100%;
+        }
+
+        .steps-list {
+            display: flex;
+            flex-direction: column;
+            gap: 80px; /* アイコンがはみ出す分、間隔を広げる */
+        }
+
+        .step-item {
+            display: flex;
+            align-items: center;
+            gap: 50px;
+            background-color: #fff;
+            border: 2px solid #eee;
+            border-radius: 24px;
+            padding: 40px;
+            position: relative;
+            overflow: visible; /* アイコンを枠の外にはみ出させるためvisibleに変更 */
+        }
+
+        /* 偶数番目は画像を右に */
+        .step-item:nth-child(even) {
+            flex-direction: row-reverse;
+        }
+
+        .step-image {
+            flex: 1;
+            max-width: 450px;
+            height: 300px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            background-color: #f8fafc;
+            border-radius: 16px;
+        }
+
+        .step-image svg {
+            width: 100%;
+            height: 100%;
+            max-width: 380px;
+            max-height: 250px;
+        }
+
+        .step-content {
+            flex: 1;
+            padding: 20px 0;
+        }
+
+        .step-badge {
+            display: inline-block;
+            background-color: var(--navy);
+            color: white;
+            padding: 8px 20px;
+            border-radius: 50px;
+            font-size: 16px;
+            font-weight: 700;
+            margin-bottom: 20px;
+            letter-spacing: 0.05em;
+        }
+
+        .step-badge.field {
+            background-color: var(--orange); /* 現場ステップは色を変える */
+        }
+
+        /* 人物アイコン（絶対配置・サイズアップ） */
+        .persona-icon {
+            position: absolute;
+            top: -40px;  /* 枠の上に飛び出させる */
+            right: 40px; /* 右寄せ */
+            width: 110px;
+            height: 110px;
+            border-radius: 50%;
+            border: 4px solid #fff; /* 背景に馴染ませる白フチ */
+            background-color: #fff;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.15); /* 影で浮かせる */
+            z-index: 10;
+        }
+        
+        .persona-icon svg {
+            width: 100%;
+            height: 100%;
+        }
+
+        .step-title {
+            font-size: 28px;
+            color: var(--navy);
+            margin: 0 0 20px 0;
+            font-weight: 800;
+        }
+
+        .step-desc {
+            font-family: 'Zen Maru Gothic', sans-serif;
+            font-weight: 500;
+            font-size: 18px;
+            line-height: 1.9;
+            color: var(--text-main);
+        }
+
+        /* --- レスポンシブ対応 --- */
+        @media (max-width: 900px) {
+            .steps-section {
+                padding: 60px 0;
+            }
+
+            .steps-list {
+                gap: 60px;
+            }
+            .step-item {
+                flex-direction: column;
+                padding: 50px 30px 30px 30px; /* 上部にスペース確保 */
+                text-align: center;
+                margin-top: 30px; /* アイコンはみ出し分のマージン */
+            }
+            .step-item:nth-child(even) {
+                flex-direction: column;
+            }
+            .step-image {
+                width: 100%;
+                height: 250px;
+                margin-bottom: 20px;
+            }
+            
+            /* スマホでのアイコン位置調整 */
+            .persona-icon {
+                top: -40px;
+                right: 20px;
+                width: 90px;
+                height: 90px;
+            }
+        }
+    </style>
+</head>
+<body>
+
+<div class="lp-wrapper">
+
+    <!-- ▼▼▼ セクション3：使いかた（4ステップ） ▼▼▼ -->
+    <section class="steps-section">
+        <div class="container">
+            <h2 class="section-title">使い方は、かんたん4ステップ</h2>
+            
+            <div class="steps-list">
+                
+                <!-- Step 1 -->
+                <div class="step-item">
+                    <!-- 事務員さんアイコン (右上に配置) -->
+                    <div class="persona-icon" title="事務員">
+                        <svg viewBox="0 0 80 80" fill="none" xmlns="http://www.w3.org/2000/svg">
+                            <circle cx="40" cy="40" r="38" fill="#EFF6FF"/>
+                            <!-- PCモニター -->
+                            <rect x="25" y="25" width="30" height="22" rx="2" fill="#3B82F6"/>
+                            <rect x="27" y="27" width="26" height="18" fill="white"/> 
+                            <path d="M36 47 V52 H44 V47" stroke="#3B82F6" stroke-width="2"/>
+                            <rect x="30" y="52" width="20" height="2" fill="#3B82F6"/>
+                            <!-- 人物シルエット -->
+                            <path d="M40 78 C25 78 20 65 20 65 L25 50 C25 50 30 55 40 55 C50 55 55 50 55 50 L60 65 C60 65 55 78 40 78" fill="#1E40AF"/>
+                            <circle cx="40" cy="40" r="10" fill="#1E40AF"/>
+                            <!-- テキスト (大きく) -->
+                            <text x="40" y="73" font-size="13" fill="white" text-anchor="middle" font-weight="bold" stroke="#1E40AF" stroke-width="0.5">事務</text>
+                        </svg>
+                    </div>
+
+                    <div class="step-image">
+                        <!-- イラスト: Excel取り込み -->
+                        <svg viewBox="0 0 300 200" fill="none" xmlns="http://www.w3.org/2000/svg">
+                            <rect x="30" y="25" width="240" height="150" rx="8" fill="white" stroke="#334155" stroke-width="3"/>
+                            <path d="M130 175 V190 H170 V175" stroke="#334155" stroke-width="3"/>
+                            <rect x="110" y="190" width="80" height="5" rx="2" fill="#334155"/>
+                            <rect x="40" y="35" width="220" height="130" fill="#F8FAFC"/>
+                            <g>
+                                <rect x="60" y="65" width="40" height="50" rx="2" fill="#10B981" stroke="white" stroke-width="2"/>
+                                <text x="80" y="95" font-family="sans-serif" font-size="20" fill="white" text-anchor="middle" font-weight="bold">X</text>
+                                <text x="80" y="128" font-family="sans-serif" font-size="10" fill="#334155" text-anchor="middle" font-weight="bold">見積書.xlsx</text>
+                            </g>
+                            <path d="M115 90 H140" stroke="#64748B" stroke-width="3" stroke-linecap="round"/>
+                            <path d="M135 85 L145 90 L135 95" stroke="#64748B" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"/>
+                            <g>
+                                <rect x="160" y="55" width="90" height="70" rx="2" fill="white" stroke="#CBD5E1" stroke-width="2"/>
+                                <rect x="160" y="55" width="90" height="15" rx="2" fill="#E2E8F0"/>
+                                <circle cx="205" cy="95" r="12" stroke="#3B82F6" stroke-width="3" stroke-dasharray="8 4"/>
+                                <text x="205" y="99" font-family="sans-serif" font-size="8" fill="#3B82F6" text-anchor="middle" font-weight="bold">AI解析</text>
+                            </g>
+                        </svg>
+                    </div>
+                    <div class="step-content">
+                        <span class="step-badge">STEP 1</span>
+                        <h3 class="step-title">いつもの書式を読み込む</h3>
+                        <p class="step-desc">
+                            今お使いの見積書ファイルをそのままアップロード。<br>
+                            AIが「入力すべき場所」を自動で判別し、フォームの土台を一瞬で作ります。
+                        </p>
+                    </div>
+                </div>
+
+                <!-- Step 2 -->
+                <div class="step-item">
+                    <!-- 事務員さんアイコン (右上に配置) -->
+                    <div class="persona-icon" title="事務員">
+                        <svg viewBox="0 0 80 80" fill="none" xmlns="http://www.w3.org/2000/svg">
+                            <circle cx="40" cy="40" r="38" fill="#EFF6FF"/>
+                            <rect x="25" y="25" width="30" height="22" rx="2" fill="#3B82F6"/>
+                            <rect x="27" y="27" width="26" height="18" fill="white"/> 
+                            <path d="M36 47 V52 H44 V47" stroke="#3B82F6" stroke-width="2"/>
+                            <rect x="30" y="52" width="20" height="2" fill="#3B82F6"/>
+                            <path d="M40 78 C25 78 20 65 20 65 L25 50 C25 50 30 55 40 55 C50 55 55 50 55 50 L60 65 C60 65 55 78 40 78" fill="#1E40AF"/>
+                            <circle cx="40" cy="40" r="10" fill="#1E40AF"/>
+                            <text x="40" y="73" font-size="13" fill="white" text-anchor="middle" font-weight="bold" stroke="#1E40AF" stroke-width="0.5">事務</text>
+                        </svg>
+                    </div>
+
+                    <div class="step-image">
+                        <!-- イラスト: ロック・ルール設定 -->
+                        <svg viewBox="0 0 300 200" fill="none" xmlns="http://www.w3.org/2000/svg">
+                            <rect x="50" y="30" width="200" height="140" rx="4" fill="white" stroke="#334155" stroke-width="2"/>
+                            <rect x="70" y="50" width="160" height="30" fill="#F1F5F9" stroke="#E2E8F0"/>
+                            <text x="80" y="70" font-family="sans-serif" font-size="12" fill="#64748B">商品名：窓枠サッシA</text>
+                            <rect x="70" y="90" width="160" height="30" fill="#FFF7ED" stroke="#F97316" stroke-width="2"/>
+                            <text x="80" y="110" font-family="sans-serif" font-size="12" fill="#C2410C">金額（計算式）</text>
+                            <circle cx="210" cy="105" r="15" fill="#EF4444"/>
+                            <path d="M210 100 V95 A5 5 0 0 0 205 95 H215 A5 5 0 0 0 210 95" stroke="white" stroke-width="2" fill="none"/>
+                            <rect x="204" y="100" width="12" height="10" fill="white"/>
+                            <rect x="70" y="140" width="30" height="16" rx="8" fill="#10B981"/>
+                            <circle cx="92" cy="148" r="6" fill="white"/>
+                            <text x="110" y="153" font-family="sans-serif" font-size="12" fill="#333">必須入力にする</text>
+                        </svg>
+                    </div>
+                    <div class="step-content">
+                        <span class="step-badge">STEP 2</span>
+                        <h3 class="step-title">入力ルールを決める</h3>
+                        <p class="step-desc">
+                            「ここは数字だけ」「ここは必須」とポチポチ指定。<br>
+                            大切な計算式が入っているセルは、現場からは触れないように「ロック（保護）」します。
+                        </p>
+                    </div>
+                </div>
+
+                <!-- Step 3 -->
+                <div class="step-item">
+                    <!-- 現場作業人アイコン (右上に配置) -->
+                    <div class="persona-icon" title="現場">
+                        <svg viewBox="0 0 80 80" fill="none" xmlns="http://www.w3.org/2000/svg">
+                            <circle cx="40" cy="40" r="38" fill="#FFF7ED"/>
+                            <!-- 体 (作業着) -->
+                            <path d="M40 78 C25 78 20 65 20 65 L25 55 C25 55 30 60 40 60 C50 60 55 55 55 55 L60 65 C60 65 55 78 40 78" fill="#F59E0B"/>
+                            <path d="M40 60 V78" stroke="white" stroke-width="1"/>
+                            <!-- 顔 (シルエット) -->
+                            <circle cx="40" cy="45" r="12" fill="#B45309"/>
+                            <!-- ヘルメット -->
+                            <path d="M25 42 C25 30 55 30 55 42 V46 H25 V42 Z" fill="#F59E0B"/>
+                            <rect x="36" y="32" width="8" height="8" rx="1" fill="white"/> <!-- 緑十字台座 -->
+                            <rect x="39" y="33" width="2" height="6" fill="#10B981"/>
+                            <rect x="37" y="35" width="6" height="2" fill="#10B981"/>
+                            <!-- テキスト (大きく) -->
+                            <text x="40" y="73" font-size="13" fill="white" text-anchor="middle" font-weight="bold" stroke="#B45309" stroke-width="0.5">現場</text>
+                        </svg>
+                    </div>
+
+                    <div class="step-image">
+                        <!-- イラスト: スマホ入力 -->
+                        <svg viewBox="0 0 300 200" fill="none" xmlns="http://www.w3.org/2000/svg">
+                            <path d="M200 120 C 200 120, 180 180, 220 190" stroke="#F8D7DA" stroke-width="20" stroke-linecap="round"/>
+                            <rect x="110" y="30" width="80" height="150" rx="10" fill="white" stroke="#333" stroke-width="4"/>
+                            <rect x="115" y="40" width="70" height="130" fill="#F8FAFC"/>
+                            <rect x="120" y="60" width="60" height="10" fill="#E2E8F0"/>
+                            <rect x="120" y="80" width="60" height="20" fill="white" stroke="#CBD5E1"/>
+                            <rect x="120" y="110" width="60" height="10" fill="#E2E8F0"/>
+                            <rect x="125" y="145" width="50" height="15" rx="4" fill="#10B981"/>
+                            <text x="150" y="156" font-family="sans-serif" font-size="8" fill="white" text-anchor="middle" font-weight="bold">送信！</text>
+                            <path d="M210 50 L215 40 L220 50 L230 55 L220 60 L215 70 L210 60 L200 55 Z" fill="#F59E0B"/>
+                        </svg>
+                    </div>
+                    <div class="step-content">
+                        <span class="step-badge field">STEP 3</span>
+                        <h3 class="step-title">スマホでサクッと入力</h3>
+                        <p class="step-desc">
+                            現場担当者にはURLを送るだけ。<br>
+                            専用のスマホ画面に数字や項目を入れるだけで、いつもの書式の見積書が完成！
+                        </p>
+                    </div>
+                </div>
+
+                <!-- Step 4 -->
+                <div class="step-item">
+                    <!-- 事務員さんアイコン (右上に配置) -->
+                    <div class="persona-icon" title="事務員">
+                        <svg viewBox="0 0 80 80" fill="none" xmlns="http://www.w3.org/2000/svg">
+                            <circle cx="40" cy="40" r="38" fill="#EFF6FF"/>
+                            <rect x="25" y="25" width="30" height="22" rx="2" fill="#3B82F6"/>
+                            <rect x="27" y="27" width="26" height="18" fill="white"/> 
+                            <path d="M36 47 V52 H44 V47" stroke="#3B82F6" stroke-width="2"/>
+                            <rect x="30" y="52" width="20" height="2" fill="#3B82F6"/>
+                            <path d="M40 78 C25 78 20 65 20 65 L25 50 C25 50 30 55 40 55 C50 55 55 50 55 50 L60 65 C60 65 55 78 40 78" fill="#1E40AF"/>
+                            <circle cx="40" cy="40" r="10" fill="#1E40AF"/>
+                            <text x="40" y="73" font-size="13" fill="white" text-anchor="middle" font-weight="bold" stroke="#1E40AF" stroke-width="0.5">事務</text>
+                        </svg>
+                    </div>
+
+                    <div class="step-image">
+                        <!-- イラスト: 完成した見積書 -->
+                        <svg viewBox="0 0 300 200" fill="none" xmlns="http://www.w3.org/2000/svg">
+                            <rect x="40" y="30" width="220" height="130" rx="8" fill="white" stroke="#334155" stroke-width="3"/>
+                            <path d="M120 160V180H180V160" stroke="#334155" stroke-width="3"/>
+                            <rect x="100" y="180" width="100" height="5" rx="2" fill="#334155"/>
+                            <rect x="55" y="45" width="190" height="100" fill="#F1F5F9"/>
+                            <rect x="65" y="55" width="170" height="10" fill="#10B981" opacity="0.3"/>
+                            <rect x="65" y="75" width="170" height="5" fill="#E2E8F0"/>
+                            <rect x="65" y="85" width="170" height="5" fill="#E2E8F0"/>
+                            <rect x="65" y="95" width="170" height="5" fill="#E2E8F0"/>
+                            <rect x="65" y="105" width="170" height="5" fill="#E2E8F0"/>
+                            <rect x="165" y="125" width="70" height="15" fill="#FEF3C7" stroke="#F59E0B"/>
+                            <text x="200" y="136" font-family="sans-serif" font-size="10" fill="#D97706" text-anchor="middle" font-weight="bold">¥ 1,200,000</text>
+                            <circle cx="250" cy="150" r="30" fill="#10B981" stroke="white" stroke-width="3"/>
+                            <path d="M238 150 L248 160 L262 140" stroke="white" stroke-width="4" stroke-linecap="round" stroke-linejoin="round" fill="none"/>
+                            <path d="M25 50 L30 40 L35 50 L45 55 L35 60 L30 70 L25 60 L15 55 Z" fill="#F59E0B"/>
+                        </svg>
+                    </div>
+                    <div class="step-content">
+                        <span class="step-badge">STEP 4</span>
+                        <h3 class="step-title">書式はそのままで、見積書が完成</h3>
+                        <p class="step-desc">
+                            現場から送信されたデータは、元のExcelファイルの指定した場所に自動で反映されます。<br>
+                            レイアウト崩れや計算式エラーの心配はゼロ。事務員さんは内容を確認して、保存・印刷するだけです。
+                        </p>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+    </section>
+
+</div><!-- /lp-wrapper -->
+
+</body>
+</html>
