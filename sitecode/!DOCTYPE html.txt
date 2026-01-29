@@ -1,0 +1,299 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>エクセルまもる君 - サービス紹介</title>
+<style>
+:root{--navy:#001f3f;--green:#2ecc71;--orange:#e67e22;--red-alert:#e74c3c;--text-main:#333;--text-white:#fff;--bg-light:#f4f7f6}
+body{margin:0;padding:0;background-color:transparent}
+.lp-wrapper{font-family:-apple-system,BlinkMacSystemFont,"Hiragino Maru Gothic Pro","BIZ UDGothic","Rounded Mplus 1c",sans-serif;color:var(--text-main);width:100%;overflow-x:hidden}
+.lp-wrapper *{box-sizing:border-box}
+.container{max-width:1200px;margin:0 auto;padding:0 20px}
+.section-title{font-size:36px;color:var(--navy);text-align:center;margin-bottom:60px;font-weight:800}
+.highlight-red{font-weight:700;color:var(--red-alert)}
+.hero-section{background-color:transparent;color:var(--navy);padding:60px 20px 80px;overflow:hidden;width:100%}
+.hero-container{max-width:1100px;margin:0 auto;display:flex;flex-direction:column;gap:40px}
+.hero-header{display:flex;align-items:flex-start;gap:50px;width:100%}
+.service-branding{flex-shrink:0;display:flex;flex-direction:column;align-items:center;margin-top:60px}
+.service-tagline{font-size:14px;font-weight:500;color:var(--orange);margin-bottom:8px;letter-spacing:.1em}
+.service-name{display:flex;align-items:center;gap:12px}
+.service-name .excel-icon{width:40px;height:40px;flex-shrink:0}
+.service-name-text{font-size:32px;font-weight:800;color:var(--navy);letter-spacing:.05em}
+.hero-title-area{flex:1;max-width:580px;display:flex;align-items:center;margin-left:40px}
+.hero-catchphrase-main{font-size:42px;font-weight:800;line-height:1.4;margin:0;color:var(--navy);text-align:left}
+.pc-no-break{display:inline}
+.hero-content-body{display:grid;grid-template-columns:1fr 1fr;gap:50px;align-items:center}
+.hero-description-area{display:flex;flex-direction:column;justify-content:center}
+.hero-description{font-weight:500;font-size:18px;line-height:2;margin-bottom:40px;color:var(--text-main);letter-spacing:.05em}
+.hero-description strong{font-weight:700;color:var(--navy)}
+.hero-btn{display:inline-flex;align-items:center;justify-content:center;background-color:var(--orange);color:#fff;text-decoration:none;font-weight:700;font-size:18px;padding:18px 40px;border-radius:50px;box-shadow:0 4px 15px rgba(230,126,34,.4);transition:all .3s ease;width:fit-content}
+.hero-btn:hover{transform:translateY(-3px);box-shadow:0 6px 20px rgba(230,126,34,.6)}
+.hero-btn .icon{margin-left:10px}
+.hero-image-area{position:relative;height:400px;display:flex;align-items:center;justify-content:center}
+.visual-stage{position:relative;width:100%;max-width:450px;height:350px}
+.excel-sheet{position:absolute;top:20px;right:10px;width:260px;height:320px;background:#fff;border:1px solid #ccc;border-radius:8px;box-shadow:0 10px 25px rgba(0,0,0,.1);z-index:1;overflow:hidden;transform:rotate(5deg);transition:transform .3s ease}
+.hero-image-area:hover .excel-sheet{transform:rotate(8deg) translateX(10px)}
+.excel-header{background-color:#217346;height:40px;width:100%;display:flex;align-items:center;padding-left:15px;color:#fff;font-weight:700;font-size:14px}
+.excel-grid{padding:10px}
+.excel-row{display:flex;border-bottom:1px solid #eee;padding:8px 0;align-items:center}
+.excel-cell-gray{height:8px;background-color:#eee;border-radius:4px}
+.excel-cell-1{width:30%;margin-right:5%}
+.excel-cell-2{width:60%}
+.phone-mockup{position:absolute;bottom:0;left:20px;width:180px;height:340px;background:#fff;border:8px solid #333;border-radius:25px;box-shadow:0 15px 35px rgba(0,0,0,.2);z-index:2;overflow:hidden;display:flex;flex-direction:column}
+.phone-top-bar{height:20px;background:#f1f1f1;width:100%;border-bottom:1px solid #ddd}
+.phone-screen{padding:20px 15px;flex:1;background:#fafafa}
+.form-label{height:8px;width:40%;background-color:var(--navy);margin-bottom:6px;border-radius:2px;opacity:.8}
+.form-input{height:30px;width:100%;background-color:#fff;border:2px solid #ddd;border-radius:6px;margin-bottom:15px;display:flex;align-items:center;padding-left:8px;font-size:10px;color:#ccc}
+.arrow-indicator{position:absolute;top:50%;left:45%;transform:translate(-50%,-50%);z-index:3;color:var(--orange);background:#fff;width:60px;height:60px;border-radius:50%;display:flex;align-items:center;justify-content:center;box-shadow:0 5px 15px rgba(0,0,0,.1)}
+.problems-section{background-color:var(--bg-light);padding:100px 0;width:100%}
+.problem-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:40px;justify-content:center;max-width:1100px;margin:0 auto}
+.problem-card{background:#fff;padding:60px 40px;border-radius:20px;text-align:center;box-shadow:0 10px 25px rgba(0,0,0,.08);border-bottom:8px solid var(--navy);transition:transform .3s;display:flex;flex-direction:column;align-items:center}
+.problem-card:hover{transform:translateY(-8px)}
+.problem-illustration{width:280px;height:240px;margin-bottom:35px;display:flex;align-items:center;justify-content:center}
+.problem-illustration svg{width:100%;height:100%;filter:drop-shadow(0 4px 6px rgba(0,0,0,.1))}
+.problem-title{font-size:28px;color:var(--navy);margin-bottom:20px;font-weight:800}
+.problem-text{font-weight:500;font-size:18px;line-height:1.9;color:var(--text-main);text-align:left;width:100%}
+.steps-section{background-color:#fff;padding:100px 0;width:100%}
+.steps-list{display:flex;flex-direction:column;gap:50px}
+.step-item{display:flex;align-items:center;gap:50px;background-color:#fff;border:2px solid #eee;border-radius:24px;padding:40px;position:relative;overflow:visible}
+.step-item.office-bg{background-color:#EFF6FF;border-color:#BFDBFE}
+.step-item.field-bg{background-color:#FFF7ED;border-color:#FED7AA}
+.step-item:nth-child(even){flex-direction:row-reverse}
+.step-image{flex:1;max-width:450px;height:300px;display:flex;align-items:center;justify-content:center;background-color:#fff;border-radius:16px}
+.step-image svg{width:100%;height:100%;max-width:380px;max-height:250px}
+.step-content{flex:1;padding:20px 0}
+.step-badge{display:inline-block;background-color:var(--navy);color:#fff;padding:8px 20px;border-radius:50px;font-size:16px;font-weight:700;margin-bottom:20px;letter-spacing:.05em}
+.step-badge.field{background-color:var(--orange)}
+.persona-tag{position:absolute;top:-20px;right:30px;padding:10px 28px;border-radius:50px;font-size:18px;font-weight:700;letter-spacing:.15em;box-shadow:0 4px 12px rgba(0,0,0,.15);z-index:10;display:flex;align-items:center;gap:10px}
+.persona-tag.office{background-color:#1E40AF;color:#fff;text-shadow:1px 1px 2px rgba(0,0,0,.2)}
+.persona-tag.field{background-color:#D97706;color:#fff;text-shadow:1px 1px 2px rgba(0,0,0,.2)}
+.persona-tag .icon{font-size:18px}
+.step-title{font-size:28px;color:var(--navy);margin:0 0 20px;font-weight:800}
+.step-desc{font-weight:500;font-size:18px;line-height:1.9;color:var(--text-main)}
+.pricing-section{background-color:var(--bg-light);padding:100px 0;width:100%}
+.pricing-section .container{max-width:1000px}
+.pricing-grid{display:flex;justify-content:center;gap:40px;align-items:stretch}
+.pricing-card{flex:1;background-color:#fff;border-radius:20px;padding:40px 30px;display:flex;flex-direction:column;align-items:center;position:relative;border:2px solid #eee;box-shadow:0 5px 15px rgba(0,0,0,.05)}
+.pricing-card.free{max-width:400px}
+.pricing-card.premium{max-width:400px;border:4px solid var(--orange);box-shadow:0 10px 30px rgba(230,126,34,.15);transform:scale(1.05);z-index:2}
+.pricing-badge{position:absolute;top:-15px;background-color:var(--orange);color:#fff;padding:5px 20px;border-radius:20px;font-weight:700;font-size:14px;letter-spacing:.05em}
+.plan-name{font-size:24px;color:var(--navy);margin-bottom:20px;font-weight:800}
+.plan-price{margin-bottom:30px;color:var(--text-main)}
+.plan-price .yen{font-size:20px;font-weight:700}
+.plan-price .amount{font-size:48px;font-weight:800;color:var(--navy);font-family:system-ui,-apple-system,BlinkMacSystemFont,"Segoe UI",sans-serif}
+.plan-price .tax{font-size:14px;color:#888}
+.plan-features{list-style:none;padding:0;margin:0 0 30px;width:100%;text-align:left}
+.plan-features li{padding:12px 0;border-bottom:1px solid #eee;font-size:16px;font-weight:500;display:flex;align-items:center;gap:10px}
+.plan-features li:last-child{border-bottom:none}
+.plan-features .icon-check{color:var(--green);font-size:18px;font-weight:700}
+.plan-note{background-color:#f8fafc;padding:15px;border-radius:10px;font-size:14px;color:var(--text-main);text-align:center;line-height:1.6;margin-top:auto;width:100%}
+.qa-section{background-color:#fff;padding:100px 0;width:100%}
+.qa-list{display:flex;flex-direction:column;gap:30px}
+.qa-item{background-color:var(--bg-light);border-radius:16px;overflow:hidden;border-left:8px solid var(--navy)}
+.qa-question{padding:25px 30px;display:flex;align-items:flex-start;gap:20px;font-size:20px;font-weight:700;color:var(--navy);border-bottom:1px solid #e0e0e0}
+.qa-icon-q{background-color:var(--navy);color:#fff;width:40px;height:40px;border-radius:50%;display:flex;align-items:center;justify-content:center;font-weight:700;flex-shrink:0}
+.qa-answer{padding:30px 30px 30px 90px;font-weight:500;font-size:16px;line-height:1.8;color:var(--text-main);position:relative}
+.qa-answer::before{content:'A';position:absolute;left:30px;top:30px;width:40px;height:40px;background-color:#fff;color:var(--green);border:2px solid var(--green);border-radius:50%;display:flex;align-items:center;justify-content:center;font-weight:700}
+.cta-section{background-color:#fff;padding:120px 0;width:100%;text-align:center}
+.cta-box{max-width:800px;margin:0 auto}
+.cta-catch{font-size:40px;color:var(--navy);font-weight:800;margin-bottom:20px;line-height:1.3}
+.cta-sub{font-weight:500;font-size:18px;color:var(--text-main);margin-bottom:50px}
+.cta-btn{display:inline-flex;align-items:center;justify-content:center;background-color:var(--orange);color:#fff;text-decoration:none;font-weight:700;font-size:24px;padding:25px 60px;border-radius:100px;box-shadow:0 10px 25px rgba(230,126,34,.4);transition:all .3s ease;width:fit-content}
+.cta-btn:hover{transform:translateY(-5px);box-shadow:0 15px 35px rgba(230,126,34,.5);background-color:#d35400}
+.cta-btn .icon{margin-left:15px}
+.cta-note{margin-top:25px;font-size:14px;color:#888}
+.cta-note .icon-check{color:var(--green);margin-right:5px}
+@media(max-width:900px){.hero-section{padding:40px 20px 60px}.hero-header{flex-direction:column;align-items:center;gap:30px}.service-branding{align-items:center;margin-top:0}.service-tagline{font-size:13px}.service-name-text{font-size:28px}.service-name .excel-icon{width:34px;height:34px}.hero-title-area{justify-content:center;margin-left:0}.hero-catchphrase-main{font-size:26px;text-align:center}.pc-no-break{display:block}.hero-content-body{grid-template-columns:1fr;gap:40px;text-align:center}.hero-description-area{align-items:center;order:2}.hero-image-area{order:1;height:300px}.visual-stage{transform:scale(.85)}.hero-btn{width:100%;max-width:300px}.problems-section{padding:60px 0}.problem-grid{grid-template-columns:1fr;gap:30px}.problem-card{padding:40px 30px;max-width:500px;margin:0 auto}.problem-illustration{width:260px;height:220px}.problem-text{text-align:center}.steps-section{padding:60px 0}.steps-list{gap:60px}.step-item{flex-direction:column;padding:40px 30px 30px;text-align:center;margin-top:10px}.step-item:nth-child(even){flex-direction:column}.step-image{width:100%;height:250px;margin-bottom:20px}.persona-tag{top:-18px;right:20px;padding:8px 22px;font-size:15px}.persona-tag .icon{font-size:15px}.pricing-section{padding:60px 0}.pricing-grid{flex-direction:column;align-items:center;gap:50px}.pricing-card.premium{transform:none;order:-1;width:100%}.pricing-card.free{width:100%}.qa-section{padding:60px 0}.qa-question{font-size:18px;padding:20px;gap:15px}.qa-answer{padding:20px;display:flex;flex-direction:column;gap:10px}.qa-answer::before{position:static;margin-bottom:10px}.cta-section{padding:60px 0}.cta-catch{font-size:28px}.cta-btn{width:100%;font-size:20px;padding:20px}}
+</style>
+</head>
+<body>
+<div class="lp-wrapper">
+<section class="hero-section">
+<div class="hero-container">
+<div class="hero-header">
+<div class="service-branding">
+<p style="color:var(--orange);font-weight:700;font-size:20px;margin:0 0 15px;letter-spacing:.1em">✨ 現場も事務も、みんなハッピー</p>
+<h1 style="font-size:48px;font-weight:800;color:var(--navy);margin:0;line-height:1.2"><svg style="margin-right:10px;vertical-align:middle" width="36" height="44" viewBox="0 0 384 512" fill="#217346"><path d="M64 0C28.7 0 0 28.7 0 64V448c0 35.3 28.7 64 64 64H320c35.3 0 64-28.7 64-64V160H256c-17.7 0-32-14.3-32-32V0H64zM256 0V128H384L256 0zM155.7 250.2L192 302.1l36.3-51.9c7.6-10.9 22.6-13.5 33.4-5.9s13.5 22.6 5.9 33.4L221.3 344l46.4 66.2c7.6 10.9 5 25.8-5.9 33.4s-25.8 5-33.4-5.9L192 385.8l-36.3 51.9c-7.6 10.9-22.6 13.5-33.4 5.9s-13.5-22.6-5.9-33.4L162.7 344l-46.4-66.2c-7.6-10.9-5-25.8 5.9-33.4s25.8-5 33.4 5.9z"/></svg>エクセルまもる君</h1>
+</div>
+<div class="hero-title-area">
+<h1 class="hero-catchphrase-main">「また数式が消えてる…」のストレスから、<span class="pc-no-break">事務員さんを解放。</span></h1>
+</div>
+</div>
+<div class="hero-content-body">
+<div class="hero-description-area">
+<p class="hero-description">『エクセルまもる君』は、<strong>今お使いの見積書</strong>（エクセル）をそのまま<strong>「入力フォーム」</strong>に変えるアプリです。<br>現場担当者はスマホから指定した項目を入力するだけ。<br>事務員さんの元には、数式もレイアウトも崩れていない<strong>「完璧な見積書」</strong>が届きます。</p>
+<a href="https://webapp-bhm.pages.dev/register" target="_blank" rel="noopener noreferrer" class="hero-btn">無料で試してみる <svg class="icon" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 12h14M12 5l7 7-7 7"/></svg></a>
+</div>
+<div class="hero-image-area">
+<div class="visual-stage">
+<div class="excel-sheet">
+<div class="excel-header"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" style="margin-right:8px"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/><polyline points="14 2 14 8 20 8"/></svg> 見積書.xlsx</div>
+<div class="excel-grid">
+<div class="excel-row"><div class="excel-cell-gray excel-cell-1"></div><div class="excel-cell-gray excel-cell-2"></div></div>
+<div class="excel-row"><div class="excel-cell-gray excel-cell-1"></div><div class="excel-cell-gray excel-cell-2"></div></div>
+<div class="excel-row"><div class="excel-cell-gray excel-cell-1"></div><div class="excel-cell-gray excel-cell-2"></div></div>
+<div class="excel-row"><div class="excel-cell-gray excel-cell-1"></div><div class="excel-cell-gray excel-cell-2"></div></div>
+<div class="excel-row"><div class="excel-cell-gray excel-cell-1"></div><div class="excel-cell-gray excel-cell-2" style="background-color:var(--orange);opacity:.3;width:40%"></div></div>
+<div style="margin-top:20px;text-align:right;font-size:24px;color:var(--navy);font-weight:700">¥ 150,000</div>
+</div>
+<div style="position:absolute;bottom:20px;right:20px;border:2px solid var(--orange);color:var(--orange);padding:5px 10px;font-weight:700;transform:rotate(-15deg);border-radius:4px;font-size:12px">数式保護済</div>
+</div>
+<div class="arrow-indicator"><svg width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><line x1="5" y1="12" x2="19" y2="12"/><polyline points="12 5 19 12 12 19"/></svg></div>
+<div class="phone-mockup">
+<div class="phone-top-bar"></div>
+<div class="phone-screen">
+<div style="text-align:center;font-weight:700;color:var(--navy);margin-bottom:15px;font-size:14px">データ入力</div>
+<div class="form-label"></div>
+<div class="form-input">窓枠工事一式</div>
+<div class="form-label" style="width:30%"></div>
+<div class="form-input">150,000</div>
+<div class="form-label" style="width:50%;background-color:#ddd"></div>
+<div style="margin-top:20px;background-color:var(--green);color:#fff;text-align:center;padding:8px;border-radius:4px;font-weight:700;font-size:12px">送信</div>
+</div>
+</div>
+</div>
+</div>
+</div>
+</div>
+</section>
+<section class="problems-section">
+<div class="container">
+<h2 class="section-title">こんなことで、<br class="mobile-show">事務作業が止まっていませんか？</h2>
+<div class="problem-grid">
+<div class="problem-card">
+<div class="problem-illustration">
+<svg viewBox="0 0 280 220" fill="none"><g transform="translate(20,10)"><text x="45" y="45" font-size="14" fill="#10B981" font-weight="700" text-anchor="end">Before</text><rect x="55" y="10" width="140" height="70" rx="8" fill="#ECFDF5" stroke="#10B981" stroke-width="3"/><text x="125" y="42" font-family="monospace" font-size="16" fill="#059669" font-weight="700" text-anchor="middle">=SUM(A1:A5)</text><text x="125" y="65" font-size="18" fill="#047857" font-weight="700" text-anchor="middle">✓ 計算式</text></g><g transform="translate(125,95)"><path d="M5 0L35 0L35 14L50 14L20 38L-10 14L5 14Z" fill="#EF4444"/></g><g transform="translate(20,140)"><text x="45" y="45" font-size="14" fill="#EF4444" font-weight="700" text-anchor="end">After</text><rect x="55" y="10" width="140" height="70" rx="8" fill="#FEF2F2" stroke="#EF4444" stroke-width="3"/><text x="125" y="42" font-size="20" fill="#DC2626" font-weight="700" text-anchor="middle">12345</text><text x="125" y="65" font-size="18" fill="#B91C1C" font-weight="700" text-anchor="middle">✗ ただの数字</text></g></svg>
+</div>
+<h3 class="problem-title">上書き事件</h3>
+<p class="problem-text">現場担当者が合計欄に直接数字を打ち込んでしまい、大切な<span class="highlight-red">計算式が消えて</span>しまった。<br>「また直さなきゃ…」</p>
+</div>
+<div class="problem-card">
+<div class="problem-illustration">
+<svg viewBox="0 0 260 220" fill="none"><rect x="40" y="15" width="130" height="170" rx="4" fill="#fff" stroke="#94A3B8" stroke-width="2"/><rect x="55" y="35" width="100" height="14" rx="2" fill="#E2E8F0"/><rect x="55" y="55" width="100" height="14" rx="2" fill="#E2E8F0"/><rect x="55" y="75" width="100" height="14" rx="2" fill="#E2E8F0"/><rect x="55" y="95" width="100" height="14" rx="2" fill="#E2E8F0"/><rect x="55" y="115" width="100" height="14" rx="2" fill="#E2E8F0"/><rect x="55" y="135" width="100" height="14" rx="2" fill="#E2E8F0"/><rect x="55" y="155" width="100" height="14" rx="2" fill="#E2E8F0"/><g transform="translate(120,50)"><rect width="110" height="150" rx="4" fill="#FEF3C7" stroke="#F59E0B" stroke-width="2"/><text x="55" y="35" font-size="18" fill="#B45309" font-weight="700" text-anchor="middle">2枚目</text><rect x="20" y="55" width="70" height="12" rx="2" fill="#FDE68A"/><rect x="20" y="75" width="70" height="12" rx="2" fill="#FDE68A"/><rect x="20" y="95" width="70" height="12" rx="2" fill="#FDE68A"/><text x="55" y="135" font-size="28">😫</text></g><g transform="translate(0,15)"><ellipse cx="45" cy="32" rx="44" ry="32" fill="#fff" stroke="#EF4444" stroke-width="2"/><path d="M75 55L90 75L60 52" fill="#fff" stroke="#EF4444" stroke-width="2"/><text x="45" y="28" font-size="12" fill="#DC2626" font-weight="700" text-anchor="middle">1枚に</text><text x="45" y="44" font-size="12" fill="#DC2626" font-weight="700" text-anchor="middle">収まらない!</text></g></svg>
+</div>
+<h3 class="problem-title">レイアウト崩壊</h3>
+<p class="problem-text">行を<span class="highlight-red">勝手に追加</span>されたり、セルの幅を<span class="highlight-red">勝手に変え</span>られたり。<br>印刷したら1枚に収まらなくてイライラ。</p>
+</div>
+<div class="problem-card">
+<div class="problem-illustration">
+<svg viewBox="0 0 260 220" fill="none"><rect x="15" y="15" width="230" height="180" rx="10" fill="#FFF7ED" stroke="#CBD5E1" stroke-width="2"/><circle cx="65" cy="75" r="32" fill="#FDBA74" opacity=".6"/><rect x="185" y="85" width="50" height="95" fill="#DBEAFE" stroke="#334155" stroke-width="2"/><rect x="195" y="98" width="12" height="12" fill="#FEF08A"/><rect x="215" y="98" width="12" height="12" fill="#FEF08A"/><rect x="195" y="118" width="12" height="12" fill="#FEF08A"/><rect x="215" y="118" width="12" height="12" fill="#fff"/><rect x="15" y="175" width="230" height="25" fill="#475569"/><line x1="25" y1="188" x2="235" y2="188" stroke="#fff" stroke-width="2" stroke-dasharray="12 12"/><g transform="translate(95,148)"><path d="M0 15L12 15L18 0L55 0L55 15L62 15L62 28L0 28Z" fill="#fff" stroke="#334155" stroke-width="2"/><circle cx="15" cy="28" r="7" fill="#333"/><circle cx="47" cy="28" r="7" fill="#333"/><rect y="18" width="3" height="8" fill="#EF4444"/></g><path d="M140 140L152 115L165 122" fill="#fff" stroke="#334155"/><ellipse cx="178" cy="105" rx="48" ry="30" fill="#fff" stroke="#334155" stroke-width="2"/><text x="178" y="100" font-size="12" fill="#333" font-weight="700" text-anchor="middle">会社で</text><text x="178" y="118" font-size="12" fill="#333" font-weight="700" text-anchor="middle">入力しなきゃ</text></svg>
+</div>
+<h3 class="problem-title">帰社後作業</h3>
+<p class="problem-text">スマホでエクセルは開くのが大変。<br>結局、<span class="highlight-red">現場から会社に戻って</span>PCで打ち直している。</p>
+</div>
+</div>
+</div>
+</section>
+<section class="steps-section">
+<div class="container">
+<h2 class="section-title">使い方は、かんたん4ステップ</h2>
+<div class="steps-list">
+<div class="step-item office-bg">
+<div class="persona-tag office"><svg class="icon" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="2" y="3" width="20" height="14" rx="2"/><line x1="8" y1="21" x2="16" y2="21"/><line x1="12" y1="17" x2="12" y2="21"/></svg>事務</div>
+<div class="step-image">
+<svg viewBox="0 0 300 200" fill="none"><rect x="30" y="25" width="240" height="150" rx="8" fill="#fff" stroke="#334155" stroke-width="3"/><path d="M130 175V190H170V175" stroke="#334155" stroke-width="3"/><rect x="110" y="190" width="80" height="5" rx="2" fill="#334155"/><rect x="40" y="35" width="220" height="130" fill="#F8FAFC"/><g><rect x="60" y="65" width="40" height="50" rx="2" fill="#10B981" stroke="#fff" stroke-width="2"/><text x="80" y="95" font-size="20" fill="#fff" text-anchor="middle" font-weight="700">X</text><text x="80" y="128" font-size="10" fill="#334155" text-anchor="middle" font-weight="700">見積書.xlsx</text></g><path d="M115 90H140" stroke="#64748B" stroke-width="3" stroke-linecap="round"/><path d="M135 85L145 90L135 95" stroke="#64748B" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"/><g><rect x="160" y="55" width="90" height="70" rx="2" fill="#fff" stroke="#CBD5E1" stroke-width="2"/><rect x="160" y="55" width="90" height="15" rx="2" fill="#E2E8F0"/><circle cx="205" cy="95" r="12" stroke="#3B82F6" stroke-width="3" stroke-dasharray="8 4"/><text x="205" y="99" font-size="8" fill="#3B82F6" text-anchor="middle" font-weight="700">解析</text></g></svg>
+</div>
+<div class="step-content">
+<span class="step-badge">STEP 1</span>
+<h3 class="step-title">いつものエクセルを読み込む</h3>
+<p class="step-desc">今お使いの見積書ファイルをそのままアップロード。<br>エクセルのレイアウトを自動で読み取り「入力すべきセル」を選択できます。</p>
+</div>
+</div>
+<div class="step-item office-bg">
+<div class="persona-tag office"><svg class="icon" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="2" y="3" width="20" height="14" rx="2"/><line x1="8" y1="21" x2="16" y2="21"/><line x1="12" y1="17" x2="12" y2="21"/></svg>事務</div>
+<div class="step-image">
+<svg viewBox="0 0 300 200" fill="none"><rect x="50" y="30" width="200" height="140" rx="4" fill="#fff" stroke="#334155" stroke-width="2"/><rect x="70" y="50" width="160" height="30" fill="#F1F5F9" stroke="#E2E8F0"/><text x="80" y="70" font-size="12" fill="#64748B">商品名：窓枠サッシA</text><rect x="70" y="90" width="160" height="30" fill="#FFF7ED" stroke="#F97316" stroke-width="2"/><text x="80" y="110" font-size="12" fill="#C2410C">金額（計算式）</text><circle cx="210" cy="105" r="15" fill="#EF4444"/><path d="M210 100V95A5 5 0 0 0 205 95H215A5 5 0 0 0 210 95" stroke="#fff" stroke-width="2" fill="none"/><rect x="204" y="100" width="12" height="10" fill="#fff"/><rect x="70" y="140" width="30" height="16" rx="8" fill="#10B981"/><circle cx="92" cy="148" r="6" fill="#fff"/><text x="110" y="153" font-size="12" fill="#333">必須入力にする</text></svg>
+</div>
+<div class="step-content">
+<span class="step-badge">STEP 2</span>
+<h3 class="step-title">入力項目を決める</h3>
+<p class="step-desc">「数量は必須」「会社名は必須」とポチポチ指定。<br>大切な計算式が入っているセルは、現場担当者からは編集できないようにします。</p>
+</div>
+</div>
+<div class="step-item field-bg">
+<div class="persona-tag field"><svg class="icon" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M2 18v3h3M21 18v3h-3M2 12a10 10 0 0 1 10-10M12 2a10 10 0 0 1 10 10M4 8l3-3 3 3M17 8l3-3 3 3"/><circle cx="12" cy="14" r="4"/></svg>現場</div>
+<div class="step-image">
+<svg viewBox="0 0 300 200" fill="none"><rect x="100" y="15" width="100" height="175" rx="12" fill="#fff" stroke="#333" stroke-width="4"/><rect x="107" y="30" width="86" height="145" fill="#F8FAFC"/><circle cx="150" cy="22" r="3" fill="#CBD5E1"/><text x="150" y="45" font-size="9" fill="#334155" text-anchor="middle" font-weight="700">見積入力フォーム</text><text x="114" y="60" font-size="6" fill="#64748B">会社名</text><rect x="112" y="63" width="76" height="18" fill="#fff" stroke="#CBD5E1" rx="2"/><text x="117" y="75" font-size="8" fill="#333">○○株式会社</text><text x="114" y="92" font-size="6" fill="#64748B">数量</text><rect x="112" y="95" width="76" height="18" fill="#fff" stroke="#CBD5E1" rx="2"/><text x="117" y="107" font-size="8" fill="#333">10</text><text x="114" y="124" font-size="6" fill="#64748B">単価</text><rect x="112" y="127" width="76" height="18" fill="#FFF7ED" stroke="#F59E0B" stroke-width="2" rx="2"/><text x="117" y="139" font-size="8" fill="#333">¥50,000</text><rect x="156" y="130" width="2" height="12" fill="#F59E0B"><animate attributeName="opacity" values="1;0;1" dur="1s" repeatCount="indefinite"/></rect><rect x="120" y="152" width="60" height="18" rx="4" fill="#10B981"/><text x="150" y="164" font-size="9" fill="#fff" text-anchor="middle" font-weight="700">送信</text><ellipse cx="150" cy="138" rx="18" ry="12" fill="#F59E0B" opacity=".2"/></svg>
+</div>
+<div class="step-content">
+<span class="step-badge field">STEP 3</span>
+<h3 class="step-title">スマホでサクッと入力</h3>
+<p class="step-desc">現場担当者にはURLを送るだけ。<br>専用のスマホ画面に数字や項目を入れるだけで、いつもの書式の見積書が完成！</p>
+</div>
+</div>
+<div class="step-item office-bg">
+<div class="persona-tag office"><svg class="icon" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="2" y="3" width="20" height="14" rx="2"/><line x1="8" y1="21" x2="16" y2="21"/><line x1="12" y1="17" x2="12" y2="21"/></svg>事務</div>
+<div class="step-image">
+<svg viewBox="0 0 300 200" fill="none"><rect x="40" y="20" width="220" height="140" rx="8" fill="#fff" stroke="#334155" stroke-width="3"/><path d="M120 160V175H180V160" stroke="#334155" stroke-width="3"/><rect x="100" y="175" width="100" height="5" rx="2" fill="#334155"/><rect x="50" y="30" width="200" height="120" fill="#F1F5F9"/><rect x="50" y="30" width="200" height="15" fill="#217346"/><text x="60" y="41" font-size="8" fill="#fff" font-weight="700">見積書.xlsx</text><rect x="50" y="45" width="20" height="105" fill="#E2E8F0"/><text x="60" y="58" font-size="7" fill="#64748B" text-anchor="middle">1</text><text x="60" y="73" font-size="7" fill="#64748B" text-anchor="middle">2</text><text x="60" y="88" font-size="7" fill="#64748B" text-anchor="middle">3</text><text x="60" y="103" font-size="7" fill="#64748B" text-anchor="middle">4</text><text x="60" y="118" font-size="7" fill="#64748B" text-anchor="middle">5</text><text x="60" y="133" font-size="7" fill="#64748B" text-anchor="middle">6</text><text x="60" y="145" font-size="7" fill="#64748B" text-anchor="middle">7</text><rect x="70" y="45" width="180" height="10" fill="#E2E8F0"/><text x="95" y="53" font-size="7" fill="#64748B" text-anchor="middle">A</text><text x="145" y="53" font-size="7" fill="#64748B" text-anchor="middle">B</text><text x="195" y="53" font-size="7" fill="#64748B" text-anchor="middle">C</text><rect x="70" y="55" width="180" height="15" fill="#fff" stroke="#CBD5E1" stroke-width=".5"/><text x="150" y="66" font-size="10" fill="#333" text-anchor="middle" font-weight="700">御見積書</text><rect x="70" y="70" width="50" height="15" fill="#fff" stroke="#CBD5E1" stroke-width=".5"/><text x="75" y="81" font-size="7" fill="#64748B">会社名</text><rect x="120" y="70" width="130" height="15" fill="#DBEAFE" stroke="#3B82F6" stroke-width="1.5"/><text x="125" y="81" font-size="7" fill="#1E40AF" font-weight="700">○○株式会社</text><rect x="70" y="85" width="50" height="15" fill="#fff" stroke="#CBD5E1" stroke-width=".5"/><text x="75" y="96" font-size="7" fill="#64748B">商品名</text><rect x="120" y="85" width="130" height="15" fill="#fff" stroke="#CBD5E1" stroke-width=".5"/><text x="125" y="96" font-size="7" fill="#333">窓枠サッシA</text><rect x="70" y="100" width="50" height="15" fill="#fff" stroke="#CBD5E1" stroke-width=".5"/><text x="75" y="111" font-size="7" fill="#64748B">数量</text><rect x="120" y="100" width="50" height="15" fill="#DBEAFE" stroke="#3B82F6" stroke-width="1.5"/><text x="145" y="111" font-size="7" fill="#1E40AF" text-anchor="middle" font-weight="700">10</text><rect x="170" y="100" width="80" height="15" fill="#fff" stroke="#CBD5E1" stroke-width=".5"/><rect x="70" y="115" width="50" height="15" fill="#fff" stroke="#CBD5E1" stroke-width=".5"/><text x="75" y="126" font-size="7" fill="#64748B">単価</text><rect x="120" y="115" width="50" height="15" fill="#DBEAFE" stroke="#3B82F6" stroke-width="1.5"/><text x="145" y="126" font-size="7" fill="#1E40AF" text-anchor="middle" font-weight="700">¥50,000</text><rect x="170" y="115" width="80" height="15" fill="#fff" stroke="#CBD5E1" stroke-width=".5"/><rect x="70" y="130" width="100" height="18" fill="#fff" stroke="#CBD5E1" stroke-width=".5"/><text x="75" y="142" font-size="8" fill="#333" font-weight="700">合計金額</text><rect x="170" y="130" width="80" height="18" fill="#FEF3C7" stroke="#F59E0B" stroke-width="1.5"/><text x="210" y="143" font-size="9" fill="#D97706" text-anchor="middle" font-weight="700">¥500,000</text><circle cx="260" cy="160" r="22" fill="#10B981" stroke="#fff" stroke-width="3"/><path d="M250 160L257 167L270 152" stroke="#fff" stroke-width="3" stroke-linecap="round" stroke-linejoin="round" fill="none"/><path d="M30 50L35 40L40 50L50 55L40 60L35 70L30 60L20 55Z" fill="#F59E0B"/></svg>
+</div>
+<div class="step-content">
+<span class="step-badge">STEP 4</span>
+<h3 class="step-title">書式はそのままで見積書が完成</h3>
+<p class="step-desc">現場から送信されたデータが入力された状態のエクセルが完成します。<br>レイアウト崩れや計算式エラーの心配はゼロ。事務員さんは内容を確認して、保存・印刷するだけです。</p>
+</div>
+</div>
+</div>
+</div>
+</section>
+<section class="pricing-section">
+<div class="container">
+<div style="text-align:center;margin-bottom:50px">
+<p style="color:var(--orange);font-weight:700;font-size:20px;margin:0 0 15px;letter-spacing:.1em">✨ 現場も事務も、みんなハッピー</p>
+<h1 style="font-size:48px;font-weight:800;color:var(--navy);margin:0;line-height:1.2"><svg style="margin-right:10px;vertical-align:middle" width="36" height="44" viewBox="0 0 384 512" fill="#217346"><path d="M64 0C28.7 0 0 28.7 0 64V448c0 35.3 28.7 64 64 64H320c35.3 0 64-28.7 64-64V160H256c-17.7 0-32-14.3-32-32V0H64zM256 0V128H384L256 0zM155.7 250.2L192 302.1l36.3-51.9c7.6-10.9 22.6-13.5 33.4-5.9s13.5 22.6 5.9 33.4L221.3 344l46.4 66.2c7.6 10.9 5 25.8-5.9 33.4s-25.8 5-33.4-5.9L192 385.8l-36.3 51.9c-7.6 10.9-22.6 13.5-33.4 5.9s-13.5-22.6-5.9-33.4L162.7 344l-46.4-66.2c-7.6-10.9-5-25.8 5.9-33.4s25.8-5 33.4 5.9z"/></svg>エクセルまもる君</h1>
+</div>
+<h2 class="section-title">プラン内容</h2>
+<div class="pricing-grid">
+<div class="pricing-card free">
+<h3 class="plan-name">無料プラン</h3>
+<div class="plan-price"><span class="yen">月額</span><span class="amount">0</span><span class="yen">円</span></div>
+<ul class="plan-features">
+<li>フォームURL発行<span style="margin-left:auto;font-weight:700">1つまで</span></li>
+<li>見積書の作成数<span style="margin-left:auto;font-weight:700">1つまで</span></li>
+<li>ファイル保存期間<span style="margin-left:auto;font-weight:700">7日間</span></li>
+</ul>
+<div class="plan-note">2つ目以降のフォーム作成するには、<br>プレミアムプランへの<br>アップグレードが必要です。</div>
+</div>
+<div class="pricing-card premium">
+<div class="pricing-badge">おすすめ</div>
+<h3 class="plan-name">プレミアムプラン</h3>
+<div class="plan-price"><span class="yen">月額</span><span class="amount">5,500</span><span class="yen">円</span><span class="tax">（税込）</span></div>
+<ul class="plan-features">
+<li><span class="icon-check">✓</span> フォームURL発行：<strong style="color:var(--navy)">無制限</strong></li>
+<li><span class="icon-check">✓</span> 見積書の作成数：<strong style="color:var(--navy)">無制限</strong></li>
+<li><span class="icon-check">✓</span> ファイル保存期間：<strong style="color:var(--navy)">無期限</strong></li>
+</ul>
+</div>
+</div>
+</div>
+</section>
+<section class="qa-section">
+<div class="container">
+<h2 class="section-title">よくあるご質問</h2>
+<div class="qa-list">
+<div class="qa-item">
+<div class="qa-question"><div class="qa-icon-q">Q</div><div>複雑なマクロや関数が入っていても大丈夫？</div></div>
+<div class="qa-answer">はい、大丈夫です！ファイルを直接編集するのではなく、データだけを流し込む仕組みなので、計算式やマクロを壊すことはありません。今まで通りのエクセルファイルをご利用いただけます。</div>
+</div>
+<div class="qa-item">
+<div class="qa-question"><div class="qa-icon-q">Q</div><div>現場担当者は、新しいアプリの操作を覚える必要がありますか？</div></div>
+<div class="qa-answer">いいえ、特別な研修は不要です。LINEやネット検索ができる方なら、誰でも直感的に使えるシンプルな画面デザインです。URLを開いて入力するだけなので、アプリのインストールも必要ありません。</div>
+</div>
+<div class="qa-item">
+<div class="qa-question"><div class="qa-icon-q">Q</div><div>操作感を試してみたい</div></div>
+<div class="qa-answer">無料でフォーム作成が1つお試しできるのでお気軽にどうぞお試しください。</div>
+</div>
+</div>
+</div>
+</section>
+<section class="cta-section">
+<div class="container cta-box">
+<h2 class="cta-catch">事務作業のストレスをゼロに。<br>まずは無料でお試しください。</h2>
+<p class="cta-sub">現在、無料トライアル実施中。</p>
+<a href="https://webapp-bhm.pages.dev/register" target="_blank" rel="noopener noreferrer" class="cta-btn">無料で試してみる <svg class="icon" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 12h14M12 5l7 7-7 7"/></svg></a>
+<p class="cta-note"><span class="icon-check">✓</span> クレジットカード登録不要 <span class="icon-check" style="margin-left:15px">✓</span> 1分でアカウント作成完了</p>
+</div>
+</section>
+</div>
+</body>
+</html>
